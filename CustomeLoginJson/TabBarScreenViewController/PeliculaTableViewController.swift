@@ -18,6 +18,9 @@ class PeliculaTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //nombre del la tabla
+        title = "Peliculas"
 
         //agregar delegados
         PeliculasTableViewController.delegate = self

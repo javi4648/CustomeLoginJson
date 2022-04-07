@@ -22,6 +22,7 @@ class DetailsUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GuardarDatos()
+        
 
     }
     
@@ -39,15 +40,9 @@ class DetailsUserViewController: UIViewController {
                 if let dataDictionary = document.data(){
                     self.lblNombreUser.text = dataDictionary["name"] as? String
                     self.lblApellidoUser.text = dataDictionary["lastName"] as? String
-                    for item in dataDictionary {
-                                       print(item.value)
-                                   }
-                    
-                    
+                    for item in dataDictionary { print(item.value) }
                 }
                
-               
-            
             }else {
                 print("Document no exist")
             }
