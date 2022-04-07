@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class UserProfile {
     
-    static let dataUser = Auth.auth().currentUser
+    //static let dataUser = Auth.auth().currentUser
 
     static let shared = UserProfile()
     

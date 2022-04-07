@@ -10,6 +10,8 @@ import Firebase
 import FirebaseFirestore
 
 class DetailsUserViewController: UIViewController {
+    
+    
 
     @IBOutlet weak var imgUser: UIImageView!
     @IBOutlet weak var lblEmailUser: UILabel!
@@ -26,28 +28,32 @@ class DetailsUserViewController: UIViewController {
     func GuardarDatos () {
         let db = Firestore.firestore()
         let datosUsuario = Auth.auth().currentUser
+        guard let idUsuario = datosUsuario?.uid else {return}
 
         //datos del documento
-        let docRef = db.collection("users").document(datosUsuario!.uid)
-        let consulta : Void = docRef.getDocument{ (document, err) in
+        let datoUser = db.collection("users").document(idUsuario)
+        
+        //traer los datos del diccionario de usuarios
+        datoUser.getDocument {(document, err) in
             if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-                print("document data\(dataDescription)")
+                if let dataDictionary = document.data(){
+                    self.lblNombreUser.text = dataDictionary["name"] as? String
+                    self.lblApellidoUser.text = dataDictionary["lastName"] as? String
+                    for item in dataDictionary {
+                                       print(item.value)
+                                   }
+                    
+                    
+                }
+               
+               
             
-            } else {
-                print("el documento no existe")
+            }else {
+                print("Document no exist")
             }
-            
         }
         
-        //datos del usuario
-        //lblNombreUser.text =
         lblEmailUser.text = datosUsuario!.email
     }
     
-    
-    
-    
-
-
 }

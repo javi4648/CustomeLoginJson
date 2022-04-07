@@ -49,19 +49,17 @@ class DetailsViewController: UIViewController {
   
     }
     
-    @IBAction func btnAddFavorites(_ sender: Any) {
-        //acceder a los datos del usuario (solo el uid y el email)
-        
+    @IBAction func btnAddFavorites(_ sender: Any) {        
         
         //id de la pelicula
         guard let id = struc?.id else {return}
         
         //nombre de la pelicula
-        //guard let nombre = struc?.original_title else {return}
+        guard let nombre = struc?.original_title else {return}
         
-        db.collection("MovieFavorites").document(datosUsuario!.uid).(["": id] , merge: true){ err in
+        db.collection("MovieFavorites").document(datosUsuario!.uid).setData([nombre: id] , merge: true){ err in
             if let err = err {
-                print("Archivo: \(err) añadido a pelicula")
+                print("Archivo: \(err) no añadido a pelicula")
             }else {
                 print("Archivo añadido a peliculas")
             }
@@ -70,7 +68,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func btnDeleteFavorites(_ sender: Any) {
-        guard let idPelicula = struc?.id else {return}
+        //guard let idPelicula = struc?.id else {return}
         
         db.collection("MovieFavorites").document(datosUsuario!.uid).delete() { err in
             if let err = err {

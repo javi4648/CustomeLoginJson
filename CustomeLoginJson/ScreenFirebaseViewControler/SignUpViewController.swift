@@ -48,7 +48,6 @@ class SignUpViewController: UIViewController {
         
         //enviar los datos a firebase
         Auth.auth().createUser(withEmail: email, password: password){ (Result, err) in
-
             if err != nil {
                // print(err?.localizedDescription)
                 self.errorLbl("Error creando el usuario")
