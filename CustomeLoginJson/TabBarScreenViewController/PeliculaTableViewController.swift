@@ -11,7 +11,7 @@ class PeliculaTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     //declarar la tabla
     @IBOutlet weak var PeliculasTableViewController: UITableView!
-    
+    let repositoryMovies = MoviesRepository()
     //Añadir el arrego del Json
     var moviesPopulate: [Movie] = []
     var moviesUpComming: [Movie] = []
@@ -29,24 +29,8 @@ class PeliculaTableViewController: UIViewController, UITableViewDelegate, UITabl
         //Registar la celda
         let cell = UINib(nibName: "MoviePopulateTableViewCell", bundle: nil)
         PeliculasTableViewController.register(cell, forCellReuseIdentifier: "MoviePopulateTableViewCell")
-                
-        //inicializar el decoder
-        let apiService = ExecuteServiceMovies()
-        
-        //para la funcion de la parte de populates
-        let completionPopulates : ([Movie]) -> Void = { [weak self] movieItem in
-            self?.moviesPopulate = movieItem
-            self?.PeliculasTableViewController.reloadData()
-        }
-        
-        //para pintar la celda populates
-        apiService.excecuteAPI(url: Urls.populates, complited: completionPopulates)
-        
-        //para pintar la celda UpComing
-        apiService.excecuteAPI(url: Urls.upcomming){  movies in
-            self.moviesUpComming = movies
-            self.PeliculasTableViewController.reloadData()
-        }
+        repositoryMovies.delegate = self
+        repositoryMovies.getData()
         
     }
     
@@ -138,5 +122,23 @@ class PeliculaTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         
     }
+    
+}
+
+
+extension PeliculaTableViewController: RepositoryDelegate {
+    func didUpdateData() {
+        self.moviesPopulate = repositoryMovies.getPopulates()
+        self.moviesUpComming = repositoryMovies.getUpcomming()
+        self.PeliculasTableViewController.reloadData()
+    }
+    
+    func didSearchMovie(movie: Movie) {
+        dump(movie)
+    }
+
+    
+    
+    
     
 }

@@ -41,6 +41,7 @@
 		5AEE043227F4F79600406E0B /* PeliculaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE043027F4F79600406E0B /* PeliculaTableViewController.swift */; };
 		5AEE043327F4F79600406E0B /* PeliculaTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AEE043127F4F79600406E0B /* PeliculaTableViewController.xib */; };
 		5AEE043527F5232200406E0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AEE043427F5232200406E0B /* GoogleService-Info.plist */; };
+		9C58F5F127FE7C02003B999F /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C58F5F027FE7C02003B999F /* MoviesRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		5AEE043027F4F79600406E0B /* PeliculaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeliculaTableViewController.swift; sourceTree = "<group>"; };
 		5AEE043127F4F79600406E0B /* PeliculaTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeliculaTableViewController.xib; sourceTree = "<group>"; };
 		5AEE043427F5232200406E0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C58F5F027FE7C02003B999F /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		5AEE041D27F4E75C00406E0B /* Models  */ = {
 			isa = PBXGroup;
 			children = (
+				9C58F5EF27FE7BEC003B999F /* Repository */,
 				5AEE041E27F4E77B00406E0B /* Decoder.swift */,
 				5AEE042027F4E78F00406E0B /* Structures.swift */,
 				5AEE042227F4F19A00406E0B /* ImageDownload.swift */,
@@ -175,6 +178,14 @@
 				5A3044C527F7771000ED814F /* DetailsUserViewController.xib */,
 			);
 			path = TabBarScreenViewController;
+			sourceTree = "<group>";
+		};
+		9C58F5EF27FE7BEC003B999F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9C58F5F027FE7C02003B999F /* MoviesRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +293,7 @@
 				5AEE041F27F4E77B00406E0B /* Decoder.swift in Sources */,
 				5A816A9127FCF83F00CADACF /* UserProfile.swift in Sources */,
 				5AEE042727F4F24500406E0B /* MoviePopulateTableViewCell.swift in Sources */,
+				9C58F5F127FE7C02003B999F /* MoviesRepository.swift in Sources */,
 				5A3044C627F7771000ED814F /* DetailsUserViewController.swift in Sources */,
 				5AEE041B27F4E74B00406E0B /* SignUpViewController.swift in Sources */,
 			);

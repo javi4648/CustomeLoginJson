@@ -17,6 +17,8 @@ class PeliculasFavoritasViewController: UIViewController {
         super.viewDidLoad()
         descargarDatos()
         
+        
+        
     }
     
     
